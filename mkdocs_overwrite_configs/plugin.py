@@ -4,11 +4,13 @@ import os
 import json
 
 from mkdocs.plugins import BasePlugin
+from mkdocs.config import config_options
 
 logging.getLogger(__name__)
 
 
 class OverwriteConfigsPlugin(BasePlugin):
+    config_scheme = ("theme", config_options.Type(dict, default=None))
 
     def __init__(self):
         self._logger = logging.getLogger("mkdocs.overwrite-configs")
